@@ -1,0 +1,29 @@
+<mail-from-cmd> ::= "MAIL" <whitespace> "FROM:" <nullspace> <reverse-path> <nullsapce <CRLF>
+<rcpt-to-cmd> ::= "RCPT" <whitespace> "TO:" <nullspace> <forward-path> <nullspace> <CRLF>
+<data-cmd> ::= "DATA" <nullspace> <CRLF>
+    <whitespace> ::= <SP> | <SP> <whitepsace>
+    <SP> ::= the space or tab character
+    <nullspace> ::= <null> | <whitepsace>
+    <null> :== no character
+    <reverse-path> ::= <path>
+    <forward-path> ::= <path>
+    <path> ::= "<" <mailbox> ">"
+    <mailbox> ::= <local-part> "@" <domain>
+    <local-part> ::= <string>
+    <string> ::= <char> | <char> <string>
+    <char> ::= any one of the printable ASCII characters, sans <special> < or <SP>
+    <domain> ::= <element> | <element> "." <domain>
+    <element> ::= <letter> | <name>
+    <name> ::= <letter> <let-dig-str>
+    <letter> ::= any one of the 52 alphabetic characters A through Z in upper case and lowercase
+    <let-dig-str> ::= <let-dig> | <let-dig> <let-dig-str>
+    <let-dig> ::= <letter> | <digit>
+    <digit> ::= any one of the ten digits 0 through 9
+    <CRLF> ::= the newline character
+    <special> ::= "<" | ">" | "(" | ")" | "[" | "]" | "\" | "." | "," | ";" | ":" | "@" | """
+
+echo line of input to standard output
+if command is valid, echo appropriate response
+else, echo appropriate error message
+
+lexer -> parser
